@@ -6,9 +6,9 @@ PAGE_REPO="/home/worker/personal-page"
 
 cd "$PAGE_REPO" || exit 1
 
-echo "Pull latest changes" >> $DEPLOY_LOG
+echo "$(date): Pull latest changes" >> $DEPLOY_LOG
 git pull origin master
 
-echo "Syncing to webroot" >> $DEPLOY_LOG
+echo "$(date): Syncing to webroot" >> $DEPLOY_LOG
 rsync -a --delete --exclude=".git" "${PAGE_REPO}/" /var/www/personal/
-echo "Synced!" >> $DEPLOY_LOG
+echo "$(date): Synced!" >> $DEPLOY_LOG
