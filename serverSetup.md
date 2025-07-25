@@ -31,15 +31,15 @@ Create systemd unit, and then
 sudo systemctl daemon-reexec
 sudo systemctl enable --now hookshot.service
 ```
-## 5. Setup reverse proxy
+## 5. Setup reverse proxy in caddy
 ```
-yourdomain.com {
-    reverse_proxy /webhook localhost:9000
-}
+        handle /hooks/* {
+                reverse_proxy localhost:9000
+        }
 ```
 ## 6. Setup github webhook
 On GitHub: Repo → Settings → Webhooks → Add webhook:
-    Payload URL: https://yourdomain.com/webhook
+    Payload URL: https://www.ricardochaves.pt/hooks/deploy
     Content type: application/json
     Event: Just push
     Secret: (optional, but hookshot supports it — can add later)
