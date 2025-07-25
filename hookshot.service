@@ -4,7 +4,7 @@ Description=GitHub webhook listener for deploy
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/webhook -hooks /home/worker/hooks.json -port 9000
+ExecStart=/usr/local/bin/webhook -hooks /home/worker/hooks.json -port 9000 -verbose
 WorkingDirectory=/home/worker
 Restart=always
 User=worker
